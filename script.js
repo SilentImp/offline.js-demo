@@ -2,13 +2,13 @@
 (function() {
 
     /**
-     * Класс демонстрирующий синхронизацию текста введенного offline
+     * Класс показывающий то, как обрабатывается переход пользователя в offline
      * @class
      */
     class DeferedDelivery {
 
         /**
-         * Инициализируем Swarm.ja сервер и обработчики событий
+         * Назначаем обработчики событий
          * @constructor
          */
         constructor () {
@@ -32,14 +32,24 @@
             this.input = this.form.querySelector('.messanger__input');
         }
 
+        /**
+         * Выводим информацию о том, что проверено состояние соединения
+         * и какой результат проверки.
+         */
         checking () {
-            console.log('Проверяем соединение. Текущее состояние: ',Offline.state);
+            console.log('Проверяем соединение. Текущее состояние: ', Offline.state);
         }
 
+        /**
+         * Выводим информацию о том, что соединение установлено
+         */
         goUp () {
             console.log('Соединение установлено');
         }
 
+        /**
+         * Выводим информацию о том, что соединение потеряно
+         */
         goDown () {
             console.log('Соединение потеряно');
         }
@@ -49,18 +59,11 @@
          * @param event {DOM Event} событие, блокируем действие по умолчанию, что бы избежать перезагрузки проекта
          */
         sendData (event) {
-            event.preventDefault();
+            event.preventDefault()
 
-            try {
-                let xhr = new XMLHttpRequest();
-
-                xhr.open(this.form.getAttribute('method'), this.form.getAttribute('action')+'?message='+encodeURIComponent(this.input.value));
-                xhr.setRequestHeader('Content-Type', 'application/json');
-                xhr.send();
-
-            } catch (err) {
-                console.log('error: ', err);
-            }
+            let xhr = new XMLHttpRequest();
+            xhr.open(this.form.getAttribute('method'), this.form.getAttribute('action')+'?message='+encodeURIComponent(this.input.value));
+            xhr.send();
         }
     }
 
