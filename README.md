@@ -3,17 +3,17 @@
 Для запуска:
 
     // Устанавливаем сервер
-    npm install http-server -g
-    // Установка browserify
+    npm install -g http-server
+    // Устанавливаем browserify
     npm install -g browserify
     // Клонируем репозиторий
     git clone https://github.com/SilentImp/offline.js-demo.git
     // Входим в директорий
     cd offline.js-demo
-    // Установим зависимости
+    // Устанавливаем зависимости
     bower install
     npm install
-    // Сборка бандла для браузера
+    // Собираем бандл для браузера (так как используется es6)
     npm run rebuild
     // Запускаем сервер
     http-server
